@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import { View, Text, Keyboard, Animated, Platform } from 'react-native';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { View, Text, Keyboard, Animated, Platform, StyleSheet } from 'react-native';
 
 import styles from './styles';
 
@@ -75,17 +76,18 @@ class Logo extends Component {
 
     return (
       <View style={styles.container}>
-        <Animated.Image
-          resizeMode="contain"
-          style={containerImageStyles}
-          source={require('./images/background.png')}
-        >
+        <Animated.View style={containerImageStyles}>
+          <Animated.Image
+            resizeMode="contain"
+            style={[StyleSheet.absoluteFill, containerImageStyles]}
+            source={require('./images/background.png')}
+          />
           <Animated.Image
             resizeMode="contain"
             style={imageStyles}
             source={require('./images/logo.png')}
           />
-        </Animated.Image>
+        </Animated.View>
         <Text style={styles.text}>Currency Converter</Text>
       </View>
     );
